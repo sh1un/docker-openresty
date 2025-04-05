@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  openresty:
+    image: openresty/openresty:latest
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - redis
+    networks:
+      - proxy_network
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    driver: bridge
