@@ -4,6 +4,7 @@ services:
     image: openresty/openresty:latest
     volumes:
       - ./conf.d/:/etc/nginx/conf.d
+      - ./lua-scripts:/usr/local/openresty/nginx/lua-scripts
     ports:
       - "80:80"
       - "443:443"
