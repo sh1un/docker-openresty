@@ -1,0 +1,18 @@
+services:
+  no_resolver:
+    build: .
+    platform: linux/arm64
+    container_name: or-no-resolver
+    ports:
+      - "8080:80"
+    volumes:
+      - ./conf.d/nginx.conf-without.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+
+  with_resolver:
+    build: .
+    platform: linux/arm64
+    container_name: or-with-resolver
+    ports:
+      - "8081:80"
+    volumes:
+      - ./conf.d/nginx.conf-with.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
