@@ -1,0 +1,9 @@
+services:
+  nginx-resolve-when-start-demo:
+    build: .
+    platform: linux/arm64
+    container_name: nginx-resolve-when-start-demo
+    ports:
+      - "8080:80"
+    volumes:
+      - ./conf.d/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
